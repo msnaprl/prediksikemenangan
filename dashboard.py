@@ -12,12 +12,12 @@ if "username" not in st.session_state or st.session_state.username == "":
 
 # Judul dan sambutan
 st.markdown(f"## 👋 Halo, {st.session_state.username}!")
-st.markdown("Selamat datang di **Dashboard Prediksi Kemenangan Tim**! 🎯" 
+st.markdown("Selamat datang di **Dashboard Prediksi Kemenangan Tim**! 🎯
 Gunakan menu di sebelah kiri untuk mengakses:
 - 📈 Visualisasi Data  
 - 🤖 Evaluasi Model  
 - 🔮 Prediksi Kemenangan
-""")
+")
 # Tambahkan statistik dummy (misal diambil dari dataset)
 st.markdown("### 📈 Statistik Singkat")
 col1, col2, col3 = st.columns(3)
