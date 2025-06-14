@@ -4,8 +4,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.neighbors import KNeighborsClassifier
 
 df = pd.read_csv("dataset.csv")
-if 'Nomor' in df.columns:
-    df = df.drop(columns=['Nomor'])
+if 'No' in df.columns:
+    df = df.drop(columns=['No'])
 
 le = LabelEncoder()
 df_encoded = df.copy()
@@ -31,4 +31,4 @@ for col in input_encoded.columns:
 prediction = model.predict(input_encoded)[0]
 label = le.fit(df['Menang']).inverse_transform([prediction])[0]
 st.subheader("Hasil Prediksi")
-st.write(f"🏆 Prediksi: **{label}**")
+st.write(f"🏆 Prediksi Menang: **{label}**")
