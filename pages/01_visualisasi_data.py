@@ -3,8 +3,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 df = pd.read_csv("dataset.csv")
-if 'Nomor' in df.columns:
-    df = df.drop(columns=['Nomor'])
+
+# Hapus kolom 'No' dari visualisasi jika ada
+if 'No' in df.columns:
+    df = df.drop(columns=['No'])
 
 st.title("📊 Visualisasi Data")
 
@@ -15,4 +17,5 @@ for col in df.columns:
     fig, ax = plt.subplots()
     df[col].value_counts().plot(kind='bar', ax=ax)
     st.pyplot(fig)
+
 
