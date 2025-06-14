@@ -9,9 +9,12 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 df = pd.read_csv("dataset.csv")
+if 'Nomor' in df.columns:
+    df = df.drop(columns=['Nomor'])
+
 le = LabelEncoder()
 df_encoded = df.copy()
-for col in df.columns:
+for col in df_encoded.columns:
     df_encoded[col] = le.fit_transform(df_encoded[col])
 
 X = df_encoded.drop(columns=['Menang'])
@@ -39,3 +42,4 @@ for name, model in models.items():
 
     st.write("Classification Report")
     st.dataframe(pd.DataFrame(classification_report(y_test, y_pred, output_dict=True)).transpose())
+
