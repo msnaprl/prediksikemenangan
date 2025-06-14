@@ -4,10 +4,13 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.neighbors import KNeighborsClassifier
 
 df = pd.read_csv("dataset.csv")
+if 'Nomor' in df.columns:
+    df = df.drop(columns=['Nomor'])
+
 le = LabelEncoder()
 df_encoded = df.copy()
 for col in df.columns:
-    df_encoded[col] = le.fit_transform(df_encoded[col])
+    df_encoded[col] = le.fit_transform(df[col])
 
 X = df_encoded.drop(columns=['Menang'])
 y = df_encoded['Menang']
