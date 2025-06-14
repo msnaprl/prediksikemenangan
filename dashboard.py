@@ -7,12 +7,12 @@ st.set_page_config(page_title="Dashboard Kemenangan", page_icon="🏆", layout="
 
 # Input nama pengguna
 if "username" not in st.session_state or st.session_state.username == "":
-    st.session_state.username = st.text_input("Masukkan nama Anda:", placeholder="Contoh: Mesni")
+    st.session_state.username = st.text_input("Masukkan nama Anda:", placeholder="Contoh: kayla")
     st.stop()
 
 # Judul dan sambutan
 st.markdown(f"## 👋 Halo, {st.session_state.username}!")
-st.markdown("Selamat datang di **Dashboard Analisis dan Prediksi Kemenangan Tim**! 🎯" 
+st.markdown("Selamat datang di **Dashboard Prediksi Kemenangan Tim**! 🎯" 
 Gunakan menu di sebelah kiri untuk mengakses:
 - 📊 Visualisasi Data  
 - 🤖 Evaluasi Model  
