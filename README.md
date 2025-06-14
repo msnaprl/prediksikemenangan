@@ -1,10 +1,10 @@
-# KNN Prediction App
+# Prediksi Kemenangan Sepakbola
 
-Aplikasi ini menggunakan K-Nearest Neighbors (KNN) untuk memprediksi hasil pertandingan berdasarkan faktor-faktor seperti pelatih, lokasi kandang, latihan, stamina, dan mental.
+Aplikasi ini menggunakan Random Forest dan K-Nearest Neighbors (KNN) untuk memprediksi hasil pertandingan berdasarkan faktor-faktor seperti pelatih, lokasi kandang, latihan, stamina, dan mental.
 
 ## Fitur
 - Visualisasi data kategori
-- Evaluasi model KNN
+- Evaluasi model 
 - Prediksi interaktif menggunakan input pengguna
 
 ## Cara Menjalankan
