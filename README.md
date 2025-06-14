@@ -14,7 +14,7 @@ pip install -r requirements.txt
 ```
 2. Jalankan aplikasi:
 ```
-streamlit run app.py
+streamlit run dashboard.py
 ```
 
 ## Deploy
