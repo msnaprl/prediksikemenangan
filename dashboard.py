@@ -14,7 +14,7 @@ if "username" not in st.session_state or st.session_state.username == "":
 st.markdown(f"## 👋 Halo, {st.session_state.username}!")
 st.markdown("Selamat datang di **Dashboard Prediksi Kemenangan Tim**! 🎯" 
 Gunakan menu di sebelah kiri untuk mengakses:
-- 📊 Visualisasi Data  
+- 📈 Visualisasi Data  
 - 🤖 Evaluasi Model  
 - 🔮 Prediksi Kemenangan
 """)
