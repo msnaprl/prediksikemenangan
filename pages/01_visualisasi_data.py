@@ -2,20 +2,20 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
+st.title("📈 Visualisasi Data")
+
 df = pd.read_csv("dataset.csv")
-
-# Hapus kolom 'No' dari visualisasi jika ada
-if 'No' in df.columns:
-    df = df.drop(columns=['No'])
-
-st.title("📊 Visualisasi Data")
-
+st.subheader("Data")
 st.dataframe(df)
 
-for col in df.columns:
-    st.subheader(f"Distribusi {col}")
+st.subheader("Statistik Deskriptif")
+st.write(df.describe(include='all'))
+
+numeric_cols = df.select_dtypes(include='number').drop(columns=["No"], errors='ignore').columns.tolist()
+if numeric_cols:
+    col = st.selectbox("Pilih Kolom Histogram", numeric_cols)
     fig, ax = plt.subplots()
-    df[col].value_counts().plot(kind='bar', ax=ax)
+    ax.hist(df[col], bins=20, color='skyblue', edgecolor='black')
     st.pyplot(fig)
-
-
+else:
+    st.warning("Tidak ada kolom numerik selain kolom 'No'.")
