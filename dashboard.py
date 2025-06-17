@@ -3,7 +3,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Konfigurasi halaman
-st.set_page_config(page_title="Dashboard Kemenangan", page_icon="🏆", layout="wide")
+st.set_page_config(page_title="Prediksi Kemenangan Tim Bola", page_icon="🏆", layout="centered")
+
+# Judul Aplikasi
+st.title("🏆 Prediksi Kemenangan Tim Bola")
+st.subheader("Dashboard Prediksi Menggunakan Machine Learning")
 
 # Inisialisasi nama pengguna
 if "username" not in st.session_state:
@@ -27,7 +31,22 @@ if st.session_state.username != "":
     - Evaluasi Model  
     - Prediksi Kemenangan
     """)
+# Latar Belakang
+st.markdown("""
+## *Latar Belakang*
+Perkembangan teknologi informasi telah memberikan dampak yang signifikan dalam berbagai aspek kehidupan, termasuk dalam bidang olahraga. Salah satu penerapan teknologi yang kini banyak dimanfaatkan adalah pemanfaatan *data science dan machine learning* untuk menganalisis data pertandingan olahraga. Dalam konteks pertandingan sepak bola, data historis seperti jumlah kemenangan, kekalahan, jumlah gol, hingga performa tim dapat digunakan untuk memprediksi kemungkinan hasil pertandingan selanjutnya. 
+Prediksi hasil pertandingan bukan hanya menjadi perhatian para penggemar sepak bola, tetapi juga bagi pelatih, analis tim, hingga pelaku industri taruhan olahraga. Dengan adanya sistem prediksi berbasis data, pengambilan keputusan dapat dilakukan dengan lebih objektif dan berbasis bukti (evidence-based).
+Aplikasi *“Prediksi Kemenangan Tim Bola”* ini dikembangkan sebagai solusi sederhana untuk membantu pengguna memprediksi kemungkinan kemenangan suatu tim berdasarkan input data historis pertandingan. Aplikasi ini dibangun menggunakan framework *Streamlit* dan menerapkan model *Random Forest Regressor dan KNN*, sebuah algoritma machine learning yang handal dalam menangani data kompleks dan menghasilkan prediksi yang cukup akurat.
 
+### Tujuan Aplikasi:
+1. Memberikan gambaran prediktif tentang performa suatu tim berdasarkan data numerik.
+2. Menjadi media pembelajaran dalam penerapan *data mining* dan *machine learning* dalam dunia nyata.
+3. Menunjukkan potensi integrasi antara teknologi data dan olahraga untuk pengambilan keputusan yang lebih cerdas.
+
+Dengan adanya aplikasi ini, diharapkan masyarakat, terutama mahasiswa dan pengembang pemula, dapat lebih memahami bagaimana proses pemodelan prediktif dilakukan serta manfaatnya dalam kehidupan sehari-hari.
+
+---
+""")
     # Statistik dummy
     st.markdown("### 📈 Statistik Singkat")
     col1, col2, col3 = st.columns(3)
