@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
-st.title("🏆 Performa Model - Prediksi Kemenangan Tim")
+st.title("🏆 Model Performance - Prediksi Kemenangan Tim")
 
 # Load dataset
 df = pd.read_csv("dataset.csv")
