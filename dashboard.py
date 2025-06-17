@@ -67,7 +67,7 @@ if st.session_state.username != "":
    
     # Sidebar pembuat aplikasi
     st.sidebar.title("📘 Informasi pembuat Aplikasi")
-    st.sidebar.markdown("### 👥 Anggota Kelompok")
+    st.sidebar.markdown("### 👥 Anggota Kelompok 7")
     st.sidebar.markdown("""
         1. Syaiful Primordian (4101422069) sebagai Ketua 
         2. Mesni Aprilia (4101422072)  
