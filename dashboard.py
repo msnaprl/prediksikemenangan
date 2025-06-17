@@ -20,20 +20,6 @@ if st.session_state.username == "":
 # Tampilkan dashboard jika nama sudah dimasukkan
 if st.session_state.username != "":
     st.markdown(f"## 👋 Halo, {st.session_state.username}!")
-
-# Tampilkan sidebar
-st.sidebar.title("📘 Informasi pembuat Aplikasi")
-
-st.sidebar.markdown("### 👥 Anggota Kelompok")
-st.sidebar.markdown("""
-1. Syaiful Primordian (4101422069) : Ketua 
-2. Mesni Aprilia (4101422072)  
-3. Adinda Putri Aribah (4101422057)
-4. Rani Oktaviana (2304030001)
-""")
-
-#Tampilkan dashboard kembali
-if st.session_state.username != "":
     st.markdown("""
     Selamat datang di **Dashboard Prediksi Kemenangan Tim**! 🎯  
     Gunakan menu di sebelah kiri untuk mengakses:
@@ -41,8 +27,6 @@ if st.session_state.username != "":
     - Evaluasi Model  
     - Prediksi Kemenangan
     """)
-    
-    # Latar Belakang
     st.markdown("""
     ## *Latar Belakang*
     Perkembangan teknologi informasi telah memberikan dampak yang signifikan dalam berbagai aspek kehidupan, termasuk dalam bidang olahraga. Salah satu penerapan teknologi yang kini banyak dimanfaatkan adalah pemanfaatan *data science dan machine learning* untuk menganalisis data pertandingan olahraga. Dalam konteks pertandingan sepak bola, data historis seperti jumlah kemenangan, kekalahan, jumlah gol, hingga performa tim dapat digunakan untuk memprediksi kemungkinan hasil pertandingan selanjutnya. 
@@ -82,4 +66,15 @@ if st.session_state.username != "":
         new_name = st.text_input("Nama Anda:", value=st.session_state.username, key="change_name")
         if new_name != st.session_state.username and new_name.strip() != "":
             st.session_state.username = new_name.strip()
+   
+    # Sidebar pembuat aplikasi
+    st.sidebar.title("📘 Informasi pembuat Aplikasi")
+    st.sidebar.markdown("### 👥 Anggota Kelompok")
+    st.sidebar.markdown("""
+        1. Syaiful Primordian (4101422069) sebagai Ketua 
+        2. Mesni Aprilia (4101422072)  
+        3. Adinda Putri Aribah (4101422057)
+        4. Rani Oktaviana (2304030001)
+    """)
+
 
