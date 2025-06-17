@@ -4,13 +4,13 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 
-st.title("🔍 Prediksi Data Baru")
+st.title("🔮 Prediksi Kemenangan")
 
 df = pd.read_csv("dataset.csv")
 if "No" in df.columns:
     df = df.drop(columns=["No"])
 
-target_col = st.selectbox("Pilih Kolom Target", df.columns)
+target_col = st.selectbox("Pilih Kolom Target (Menang/Tidak)", df.columns)
 
 if target_col:
     X = df.drop(columns=[target_col])
@@ -20,7 +20,7 @@ if target_col:
     cat_cols = X.select_dtypes(include=['object', 'category']).columns.tolist()
 
     preprocessor = ColumnTransformer([
-        ("cat", OneHotEncoder(handle_unknown='ignore'), cat_cols)
+        ('cat', OneHotEncoder(handle_unknown='ignore'), cat_cols)
     ], remainder='passthrough')
 
     X_encoded = preprocessor.fit_transform(X)
@@ -28,7 +28,7 @@ if target_col:
     model = RandomForestClassifier(n_estimators=100, random_state=42)
     model.fit(X_encoded, y)
 
-    st.subheader("Input Data Baru")
+    st.subheader("📥 Masukkan Data untuk Diprediksi")
     user_input = {}
     for col in X.columns:
         if col in num_cols:
@@ -40,5 +40,7 @@ if target_col:
     input_encoded = preprocessor.transform(input_df)
 
     prediction = model.predict(input_encoded)[0]
-    st.success(f"🎉 Hasil Prediksi: **{prediction}**")
+    st.success(f"🎯 Hasil Prediksi: **{prediction}**")
 
+
+ 
