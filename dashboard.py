@@ -5,10 +5,18 @@ import matplotlib.pyplot as plt
 # Konfigurasi halaman
 st.set_page_config(page_title="Prediksi Kemenangan Tim Bola", page_icon="🏆", layout="centered")
 
-# Judul Aplikasi
-st.title("🏆 Prediksi Kemenangan Tim Bola")
-st.subheader("Dashboard Prediksi Menggunakan Machine Learning")
+# ===================== SIDEBAR ===========================
+st.sidebar.title("📘 Informasi pembuat Aplikasi")
 
+st.sidebar.markdown("### 👥 Anggota Kelompok")
+st.sidebar.markdown("""
+1. Syaiful Primordian (4101422069) : Ketua 
+2. Mesni Aprilia (4101422072)  
+3. Adinda Putri Aribah (4101422057)
+4. Rani Oktaviana (2304030001)
+""")
+
+# ===================== DASHBOARD (Main Area) ===========================
 # Inisialisasi nama pengguna
 if "username" not in st.session_state:
     st.session_state.username = ""
@@ -48,6 +56,7 @@ Dengan adanya aplikasi ini, diharapkan masyarakat, terutama mahasiswa dan pengem
 
 ---
 """)
+
     # Statistik dummy
     st.markdown("### 📈 Statistik Singkat")
     col1, col2, col3 = st.columns(3)
