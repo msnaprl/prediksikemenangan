@@ -1,44 +1,42 @@
 import streamlit as st
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-import seaborn as sns
-import matplotlib.pyplot as plt
+from sklearn.ensemble import RandomForestClassifier
+
+st.title("📊 Evaluasi Model: KNN & Random Forest")
 
 df = pd.read_csv("dataset.csv")
-if 'No' in df.columns:
-    df = df.drop(columns=['No'])
 
-le = LabelEncoder()
-df_encoded = df.copy()
-for col in df_encoded.columns:
-    df_encoded[col] = le.fit_transform(df_encoded[col])
+# Deteksi kolom target
+target_col = st.selectbox("Pilih Kolom Target (Label)", df.columns)
 
-X = df_encoded.drop(columns=['Menang'])
-y = df_encoded['Menang']
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# Fitur
+X = df.drop(columns=[target_col])
+y = df[target_col]
 
-st.title("📈 Evaluasi Model")
+# Validasi input numerik
+if not all(X.dtypes == 'float64') and not all(X.dtypes == 'int64'):
+    st.warning("Pastikan semua fitur bertipe numerik.")
+else:
+    # Split data
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-models = {
-    "KNN": KNeighborsClassifier(n_neighbors=3),
-    "Random Forest": RandomForestClassifier(n_estimators=100, random_state=42)
-}
+    # Model KNN
+    k = st.slider("Jumlah tetangga (K)", 1, 15, 5)
+    knn = KNeighborsClassifier(n_neighbors=k)
+    knn.fit(X_train, y_train)
+    y_pred_knn = knn.predict(X_test)
+    acc_knn = accuracy_score(y_test, y_pred_knn)
 
-for name, model in models.items():
-    st.subheader(f"Model: {name}")
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_test)
+    # Model Random Forest
+    n = st.slider("Jumlah pohon (estimators)", 10, 200, 100, step=10)
+    rf = RandomForestClassifier(n_estimators=n, random_state=42)
+    rf.fit(X_train, y_train)
+    y_pred_rf = rf.predict(X_test)
+    acc_rf = accuracy_score(y_test, y_pred_rf)
 
-    st.write("Akurasi:", round(accuracy_score(y_test, y_pred), 2))
-
-    st.write("Confusion Matrix")
-    fig, ax = plt.subplots()
-    sns.heatmap(confusion_matrix(y_test, y_pred), annot=True, fmt='d', cmap='Blues')
-    st.pyplot(fig)
-
-    st.write("Classification Report")
-    st.dataframe(pd.DataFrame(classification_report(y_test, y_pred, output_dict=True)).transpose())
+    st.subheader("🎯 Akurasi Model")
+    st.write(f"✅ KNN Accuracy: **{acc_knn:.2f}**")
+    st.write(f"🌲 Random Forest Accuracy: **{acc_rf:.2f}**")
