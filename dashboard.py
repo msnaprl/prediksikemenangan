@@ -21,7 +21,7 @@ if st.session_state.username == "":
 if st.session_state.username != "":
     st.markdown(f"## 👋 Halo, {st.session_state.username}!")
     st.markdown("""
-    Selamat datang di **Dashboard Prediksi Kemenangan Tim**! 🎯  
+    Selamat datang di **Dashboard Prediksi Kemenangan Tim Bola**! 🎯  
     Gunakan menu di sebelah kiri untuk mengakses:
     - Visualisasi Data  
     - Evaluasi Model  
@@ -29,9 +29,7 @@ if st.session_state.username != "":
     """)
     st.markdown("""
     ## *Latar Belakang*
-    Perkembangan teknologi informasi telah memberikan dampak yang signifikan dalam berbagai aspek kehidupan, termasuk dalam bidang olahraga. Salah satu penerapan teknologi yang kini banyak dimanfaatkan adalah pemanfaatan *data science dan machine learning* untuk menganalisis data pertandingan olahraga. Dalam konteks pertandingan sepak bola, data historis seperti jumlah kemenangan, kekalahan, jumlah gol, hingga performa tim dapat digunakan untuk memprediksi kemungkinan hasil pertandingan selanjutnya. 
-    Prediksi hasil pertandingan bukan hanya menjadi perhatian para penggemar sepak bola, tetapi juga bagi pelatih, analis tim, hingga pelaku industri taruhan olahraga. Dengan adanya sistem prediksi berbasis data, pengambilan keputusan dapat dilakukan dengan lebih objektif dan berbasis bukti (evidence-based).
-    Aplikasi *“Prediksi Kemenangan Tim Bola”* ini dikembangkan sebagai solusi sederhana untuk membantu pengguna memprediksi kemungkinan kemenangan suatu tim berdasarkan input data historis pertandingan. Aplikasi ini dibangun menggunakan framework *Streamlit* dan menerapkan model *Random Forest Regressor dan KNN*, sebuah algoritma machine learning yang handal dalam menangani data kompleks dan menghasilkan prediksi yang cukup akurat.
+    Perkembangan teknologi informasi telah memberikan dampak yang signifikan dalam berbagai aspek kehidupan, termasuk dalam bidang olahraga. Salah satu penerapan teknologi yang kini banyak dimanfaatkan adalah pemanfaatan *data science dan machine learning* untuk menganalisis data pertandingan olahraga. Dalam konteks pertandingan sepak bola, data historis seperti jumlah kemenangan, kekalahan, jumlah gol, hingga performa tim dapat digunakan untuk memprediksi kemungkinan hasil pertandingan selanjutnya. Prediksi hasil pertandingan bukan hanya menjadi perhatian para penggemar sepak bola, tetapi juga bagi pelatih, analis tim, hingga pelaku industri taruhan olahraga. Dengan adanya sistem prediksi berbasis data, pengambilan keputusan dapat dilakukan dengan lebih objektif dan berbasis bukti (evidence-based). Aplikasi *“Prediksi Kemenangan Tim Bola”* ini dikembangkan sebagai solusi sederhana untuk membantu pengguna memprediksi kemungkinan kemenangan suatu tim berdasarkan input data historis pertandingan. Aplikasi ini dibangun menggunakan framework *Streamlit* dan menerapkan model *Random Forest Regressor dan KNN*, sebuah algoritma machine learning yang handal dalam menangani data kompleks dan menghasilkan prediksi yang cukup akurat.
 
     ### Tujuan Aplikasi:
     1. Memberikan gambaran prediktif tentang performa suatu tim berdasarkan data numerik.
