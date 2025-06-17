@@ -31,6 +31,7 @@ if st.session_state.username != "":
     - Evaluasi Model  
     - Prediksi Kemenangan
     """)
+    
 # Latar Belakang
 st.markdown("""
 ## *Latar Belakang*
