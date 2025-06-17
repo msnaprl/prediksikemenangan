@@ -1,34 +1,44 @@
 import streamlit as st
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+
+st.title("🔍 Prediksi Data Baru")
 
 df = pd.read_csv("dataset.csv")
-if 'No' in df.columns:
-    df = df.drop(columns=['No'])
+if "No" in df.columns:
+    df = df.drop(columns=["No"])
 
-le = LabelEncoder()
-df_encoded = df.copy()
-for col in df.columns:
-    df_encoded[col] = le.fit_transform(df[col])
+target_col = st.selectbox("Pilih Kolom Target", df.columns)
 
-X = df_encoded.drop(columns=['Menang'])
-y = df_encoded['Menang']
-model = KNeighborsClassifier(n_neighbors=3)
-model.fit(X, y)
+if target_col:
+    X = df.drop(columns=[target_col])
+    y = df[target_col]
 
-st.title("🔮 Prediksi Kemenangan")
+    num_cols = X.select_dtypes(include=['int64', 'float64']).columns.tolist()
+    cat_cols = X.select_dtypes(include=['object', 'category']).columns.tolist()
 
-input_data = {}
-for col in X.columns:
-    input_data[col] = st.selectbox(col, df[col].unique())
+    preprocessor = ColumnTransformer([
+        ("cat", OneHotEncoder(handle_unknown='ignore'), cat_cols)
+    ], remainder='passthrough')
 
-input_df = pd.DataFrame([input_data])
-input_encoded = input_df.copy()
-for col in input_encoded.columns:
-    input_encoded[col] = le.fit(df[col]).transform(input_encoded[col])
+    X_encoded = preprocessor.fit_transform(X)
 
-prediction = model.predict(input_encoded)[0]
-label = le.fit(df['Menang']).inverse_transform([prediction])[0]
-st.subheader("Hasil Prediksi")
-st.write(f"🏆 Prediksi Menang: **{label}**")
+    model = RandomForestClassifier(n_estimators=100, random_state=42)
+    model.fit(X_encoded, y)
+
+    st.subheader("Input Data Baru")
+    user_input = {}
+    for col in X.columns:
+        if col in num_cols:
+            user_input[col] = st.number_input(f"{col}", value=float(df[col].mean()))
+        elif col in cat_cols:
+            user_input[col] = st.selectbox(f"{col}", df[col].unique())
+
+    input_df = pd.DataFrame([user_input])
+    input_encoded = preprocessor.transform(input_df)
+
+    prediction = model.predict(input_encoded)[0]
+    st.success(f"🎉 Hasil Prediksi: **{prediction}**")
+
