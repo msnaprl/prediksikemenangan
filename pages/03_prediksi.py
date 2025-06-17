@@ -65,7 +65,7 @@ pred_knn = knn.predict(user_encoded)[0]
 pred_rf = rf.predict(user_encoded)[0]
 
 st.subheader("📢 Hasil Prediksi")
-st.write(f"🔹 Prediksi **KNN**: {pred_knn}")
-st.write(f"🔸 Prediksi **Random Forest**: {pred_rf}")
+st.write(f"🔹 Prediksi Menang berdasarkan **KNN**: {pred_knn}")
+st.write(f"🔸 Prediksi Menang berdasarkan **Random Forest**: {pred_rf}")
 
  
