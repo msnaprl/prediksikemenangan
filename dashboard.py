@@ -21,7 +21,7 @@ if st.session_state.username == "":
 if st.session_state.username != "":
     st.markdown(f"## 👋 Halo, {st.session_state.username}!")
     st.markdown("""
-    Selamat datang di **Dashboard Prediksi Kemenangan Tim Bola**! 🎯  
+    Selamat datang di **Dashboard Prediksi Kemenangan Tim Bola**! ⚽  
     Gunakan menu di sebelah kiri untuk mengakses:
     - Visualisasi Data  
     - Evaluasi Model  
