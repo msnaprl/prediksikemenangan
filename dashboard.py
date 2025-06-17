@@ -66,7 +66,7 @@ if st.session_state.username != "":
             st.session_state.username = new_name.strip()
    
     # Sidebar pembuat aplikasi
-    st.sidebar.subtitle("📘 Informasi pembuat Aplikasi")
+    st.sidebar.title("📘 Informasi pembuat Aplikasi")
     st.sidebar.markdown("### 👥 Anggota Kelompok")
     st.sidebar.markdown("""
         1. Syaiful Primordian (4101422069) sebagai Ketua 
